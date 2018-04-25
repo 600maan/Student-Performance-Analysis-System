@@ -1,0 +1,84 @@
+﻿<html>
+    <head>
+        
+<title>XSockets webrtc example</title>
+        <script src="~/Scripts/jquery-2.1.1.js"></script>
+        <script src="~/Scripts/XSockets.latest.js"></script>
+        <script src="~/Scripts/XSockets.WebRTC.latest.js"></script>
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        <script>
+            var ws, rtc,dc;
+            var myCtx = "35965edb8883493c8b2375c6758631b1";
+            $(function () {
+                ws = new XSockets.WebSocket("ws://127.0.0.1:4502/Broker");
+                ws.onopen = function (connection) {
+                    console.log("connection", connection);
+                
+
+                    rtc = new XSockets.WebRTC(ws);
+                    dc = new XSockets.WebRTC.DataChannel("IN");
+                    dc.subscribe("chatMessage",function(data){
+                        console.log("chatMessage", data);
+                        showMessage(data.message.say);  
+
+                       
+                    });
+                    dc.onopen = function (state) {
+                        console.log("dc open", state);
+                    };
+                    rtc.addDataChannel(dc);
+
+                rtc.oncontextcreated = function (ctx) {
+                    console.log("ctx", ctx);
+                    rtc.changeContext(myCtx);
+                };
+                rtc.oncontextchanged = function (change) {
+                    console.log("change of context", change);
+
+                };
+                rtc.onremotestream = function (event) {
+                    console.log("remote mediaStream", event);
+
+                    var v = $("<video>").attr("autoplay", "autoplay").appendTo("#remoteVideos");
+                    attachMediaStream($(v).get(0), event.stream);
+                };
+
+                rtc.onlocalstream = function (stream) {
+                    attachMediaStream(document.querySelector("#localvideo"),stream);
+                };
+
+                rtc.getUserMedia(rtc.userMediaConstraints.qvga(false), function () {
+                    console.log("userMedia ok!");
+
+                });
+
+                };
+
+                $("#msg").on("keyup",function(evt) {
+                    var that=$(this);
+                    if (evt.keyCode == 13) {
+                        dc.publish("chatMessage",{say:that.val()});
+                        showMessage(that.val());
+                        that.val('');
+                    }
+                }).focus();
+            });
+
+            function showMessage(message) {
+                $("<p>").text(message).prependTo("#messages");
+            }
+
+
+        </script>
+
+    </head>
+    <body>
+        <div id="remoteVideos"></div>
+        <video id="localvideo" autoplay></video>
+        <div>
+            <input type="text" id="msg" />
+
+        </div>
+        <div id="messages"></div>
+    </body>
+</html>

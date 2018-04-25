@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SPMS.Models.Student>
+@using SPMS.Infrastructure
+<table class="table table-striped">
+    <tr>
+        <th>S.N</th>
+        <th>
+            @Html.DisplayName("Student Name")
+        </th>
+        <th>
+            @Html.DisplayName("Batch")
+        </th>
+        <th>
+            @Html.DisplayName("Gender")
+        </th>
+        <th>
+            @Html.DisplayName("Street")
+        </th>
+        <th>
+            @Html.DisplayName("City")
+        </th>
+        <th>
+            @Html.DisplayName("Country")
+        </th>
+        <th>
+            @Html.DisplayName("Class")
+        </th>
+        <th>
+            @Html.DisplayName("Rollno")
+        </th>
+        <th></th>
+    </tr>
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            i = i + 1;
+        <tr>
+            <td>@i</td>
+            <td>
+                @Html.HelperConcat(item.StudentFirstName, item.StudentMiddleName, item.StudentLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrolledDate)
+            </td>
+            <td>
+                @{
+            if (item.Gender == false)
+            { @Html.Label("Female")}
+            if (item.Gender == true)
+            { @Html.Label("Male")}
+                }
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rollno)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.StudentId })
+            </td>
+        </tr>
+
+        }
+    }
+</table>

@@ -1,0 +1,15 @@
+﻿@model SPMS.Models.Exam
+
+@{
+    ViewBag.Title = "examindex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Exam Section</h2>
+<ul id="menu">
+    @Html.ActionLink("Assignment","GiveAssignment")
+    @Html.ActionLink("Marksheet","Create")
+    @Html.ActionLink("Results","Index")
+
+
+</ul>

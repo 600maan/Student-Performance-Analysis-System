@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SPMS.Models.Exam>
+
+@{
+    ViewBag.Title = "ViewExam";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@*@Html.ActionLink("Add Marks In all exams","AddOverallMarks")*@
+<h2>ViewExam</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExamType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullMarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassMarks)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullMarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PassMarks)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.ExamId }) | 
+            @Html.ActionLink("Add Marks", "ExamPerformance", new { id=item.ExamId})
+        </td>
+    </tr>
+}
+
+</table>

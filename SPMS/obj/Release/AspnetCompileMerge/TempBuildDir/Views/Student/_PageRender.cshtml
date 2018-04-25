@@ -1,0 +1,5 @@
+﻿@model PagedList.IPagedList<SPMS.Models.Student>
+@using PagedList.Mvc;
+@Html.Partial("_StudentList",Model)
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.PageNumbersOnly, new AjaxOptions {UpdateTargetId="abc",InsertionMode=InsertionMode.Replace}))

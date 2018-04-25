@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SPMS.Models.Attendance>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>Day</th>
+        <th>
+            AttendanceStatus
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date.DayOfWeek)
+        </td>
+        <td>
+            Absent
+        </td>
+        
+    </tr>
+}
+
+</table>

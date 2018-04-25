@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SPMS.Models.Fee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h3> @Html.DisplayName("Date and Time ") </h3>
+@Html.Display("date")
+<h2 class="active">Student Accounting Details</h2>
+
+@Html.DisplayName("Student School ID - ")
+
+@Html.Display("stscid")
+
+@Html.DisplayName("Name - ")
+
+@Html.Display("nm")
+
+@Html.DisplayName("Class - ")
+
+@Html.Display("cl")
+
+<table>
+
+    <tr> <th> Annual Charges</th></tr>
+    <tr>
+        <td>Admission Fees - @Html.Display("adfee") </td>
+        <td>Security Deposit - @Html.Display("sd")   </td>
+        <td>Laboratory Charges - @Html.Display("lc")</td>
+        <td>Swimming Charges - @Html.Display("sc")</td>
+    </tr>
+    <tr><th> Miscellaneous Charges </th> </tr>
+    <tr>
+        <td>Books - @Html.Display("b") </td>
+        <td>Statiotionary - @Html.Display("s") </td>
+
+    </tr>
+    <tr><th> Monthly Charges </th> </tr>
+    <tr>
+        <td>Tution Fees - @Html.Display("mtf") </td>
+        <td>Transportation Charges - @Html.Display("mtrf") </td>
+        <td>Hostel Charges - @Html.Display("mhf") </td>
+
+    </tr>
+    <tr><th>  Total Fees of @Html.Display("nm") for this Academic Year - @Html.Display("tt")</th> </tr>
+    <tr><th>Balance Amount - @Html.Display("bal")</th></tr>
+    <tr><th>Due Amount - @Html.Display("due")</th></tr>
+
+
+    <tr><th> Total Bill Amount till Today - @Html.Display("")  </th> </tr>
+    <tr><th>  Amount Paid -  @Html.Editor("")</th> </tr>
+  
+</table>
+
+
+

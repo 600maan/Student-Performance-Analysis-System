@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - SPMS</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/usercss")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/_references.js"></script>
+</head>
+<body>
+    <header id="header">
+        <div>
+            <div>
+                <a class="logo" href="@Url.Action("Index", "Home")">
+                    <img src="~/Images/Untitled-1.png" alt="" /></a>
+                <h1 style="color: #fffae2">Student Performance Monitoring System</h1>
+            </div>
+            <div class="top-nav">
+                <div class="container-fluid">
+                    
+                </div>
+        </div>
+    </header>
+ 
+    <div class="sidebar-wrapper" style="float:left;width:15%">@RenderSection("sidemenu",required:false)</div>
+    <div class="content-wrapper" style="float:left">
+        <div id="body">
+
+            @RenderSection("featured", required: false)
+            <section class="body">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+        
+    <footer id="footer">
+        <div>
+            <p>&copy; @DateTime.Now.Year SPMS</p>
+            <ul>
+                <li>@Html.ActionLink("Contacts", "Contact")</li>
+                <li>@Html.ActionLink("Feedbacks", "Feedback")</li>
+            </ul>
+            <div>
+                <span>More about us on:</span>
+                <a id="facebook" href="https://www.facebook.com/s1161440"></a>
+                <a id="twitter" href="https://twitter.com/s1161440"></a>
+            </div>
+        </div>
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

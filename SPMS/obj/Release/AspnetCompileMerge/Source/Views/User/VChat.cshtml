@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Video Conference";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+    @{
+   
+    <head>
+        <title>Live Conference</title>
+        <script src="~/Scripts/jquery-2.1.1.js"></script>
+        <script src="~/Scripts/XSockets.latest.js"></script>
+        <script src="~/Scripts/XSockets.WebRTC.latest.js"></script>
+<style>
+        body {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #fff;
+        }
+
+        #remote {
+            background: #fafafa;
+            border-top: 1px solid #dadada;
+            border-bottom: 1px solid #dadada;
+            min-height: 340px;
+            padding: 10px;
+        }
+
+            #remote video {
+                max-width: 320px;
+                float: left;
+                margin-right: 10px;
+            }
+
+        span {
+            float: right;
+        }
+
+        #local {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+    </style>
+ @{string uname=ViewBag.name;}
+    
+  <script>
+        var ws, rtc,dc;
+        var myCtx = "1265343559964af892b7ba86205e5927";
+      //var myCtx = "35965edb8883493c8b2375c6758631b1";
+        $(function () {
+            ws = new XSockets.WebSocket("ws://192.168.52.9:4502/Broker");
+            ws.onopen = function (c) {
+
+                console.log("We are now connected to the Broker");
+
+                rtc = new XSockets.WebRTC(ws);
+
+                rtc.onpeerconnectioncreated = function (peer) {
+                    console.log("a rtcPeerConnection is created", peer);
+                };
+
+                rtc.onpeerconnectionlost = function (peer) {
+                    console.log("a rtcPeerConnection is lost", peer);
+                };
+                dc = new XSockets.WebRTC.DataChannel("IN");
+                
+                dc.onopen = function (state) {
+                    console.log("dc open", state);
+                };
+                dc.subscribe("chatMessage", function (data) {
+                    console.log("chatMessage", data);
+                    showMessage(data.message.say);
+                });
+                rtc.addDataChannel(dc);
+                rtc.oncontextcreated = function (ctx) {
+                    console.log("Lets tell the broker to connect to the pre-defined (static) context", myCtx);
+                    rtc.changeContext(myCtx);
+                };
+                rtc.onlocalstream = function (stream) {
+                    attachMediaStream(document.querySelector("#local"), stream);
+                };
+
+                rtc.getUserMedia(rtc.userMediaConstraints.qvga(true), function () {
+                    console.log("Yeah, we got a localStream");
+
+                    console.log("Lets tell the broker to connect to the pre-defined (static) context", myCtx);
+                    rtc.changeContext(myCtx);
+                });
+
+                rtc.onremotestream = function (event) {
+                    console.log("We got a remotestream from one of the rtcPeerConnections, lets create a video element", event);
+                    var v = $("<video>").attr("autoplay", "autoplay").appendTo("#remote");
+                    attachMediaStream($(v).get(0), event.stream);
+                };
+            };
+            $("#msg").on("keyup", function (evt) {
+                var that = $(this);
+                if (evt.keyCode == 13) {
+                    dc.publish("chatMessage", { say: "@uname : "+that.val() });
+                    showMessage("@uname : "+that.val());
+                    that.val('');
+                }
+            }).focus();
+
+        });
+        function showMessage(message) {
+            $("<p>").text(message).prependTo("#messages");
+        }
+
+    </script>
+
+</head>
+    <body>
+        @uname
+    <h1>Video Conference</h1>
+    <div id="remote"></div>
+  
+    <video id="local" autoplay></video>
+     
+        <div>
+            <input type="text" id="msg" />
+
+        </div>
+        <div id="messages"></div>
+
+</body>
+}
+        </html>

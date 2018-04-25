@@ -1,0 +1,126 @@
+﻿@model SPMS.Models.RegistrationView
+@using SPMS.Infrastructure
+<h2>Details</h2>
+<table>
+    <tr>
+        <td valign="top">
+            <fieldset>
+                <legend>Student</legend>
+                <table class="table table-striped">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Photo)</th>
+                        <td>&nbsp;</td>
+                        <td>
+                            <img src="@Model.ImageUrl" /></td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.StdSchoolId)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.StdSchoolId)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.EnrolledDate)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.EnrolledDate)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.StudentFirstName)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.StudentFirstName)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.StudentMiddleName)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.StudentMiddleName)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.StudentLastName)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.StudentLastName)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                        <td>&nbsp;</td>
+                        <td>
+                            @{
+                                if (Model.Gender == false)
+                                { @Html.Label("Female")}
+                                if (Model.Gender == true)
+                                { @Html.Label("Male")}
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Street)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.Street)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.City)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.City)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Country)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.Country)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ClassId)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.ClassId)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Rollno)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.Rollno)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.DateofBirth)</th>
+                        <td>&nbsp;</td>
+                        <td>@Html.DisplayFor(model => model.DateofBirth)</td>
+                    </tr>
+                </table>
+
+            </fieldset>
+
+        </td>
+        <td valign="top">
+            <aside>
+                <fieldset>
+                    <legend>Parent</legend>
+
+                    <table class="table table-striped">
+                        <tr>
+                            <th>@Html.DisplayName("Parent Name")</th>
+                            <td>&nbsp;</td>
+                            <td>@Html.HelperConcat(Model.ParentFirstName, Model.ParentMiddleName, Model.ParentLastName)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                            <td>&nbsp;</td>
+                            <td>@Html.DisplayFor(model => model.Phone)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Email)</th>
+                            <td>&nbsp;</td>
+                            <td>@Html.DisplayFor(model => model.Email)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Relation)</th>
+                            <td>&nbsp;</td>
+                            <td>@Html.DisplayFor(model => model.Relation)</td>
+                        </tr>
+
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Occupation)</th>
+                            <td>&nbsp;</td>
+                            <td>@Html.DisplayFor(model => model.Occupation)</td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </aside>
+        </td>
+    </tr>
+</table>
+

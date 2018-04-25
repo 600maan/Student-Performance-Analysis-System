@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+@section sidemenu{
+
+    <ul id="menu">
+
+        <li>@Html.ActionLink("Login", "Login", "User")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    </ul>
+    <style>
+        .ui-menu {
+            width: 150px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#menu").menu();
+        });
+    </script>
+}
+<hgroup class="title">
+    
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<section class="contact">
+    <header>
+        <h3>Phone</h3>
+    </header>
+    <p>
+        <span class="label">Main:</span>
+        <span>+852-54100757</span>
+    </p>
+    <p>
+        <span class="label">After Hours:</span>
+        <span>+852-54100757</span>
+    </p>
+</section>
+
+<section class="contact">
+    <header>
+        <h3>Email</h3>
+    </header>
+    <p>
+        <span class="label">Support:</span>
+        <span><a href="support@SPMS.com">support@SPMS.com</a></span>
+    </p>
+    <p>
+        <span class="label">Query:</span>
+        <span><a href="mailto:rai12345suman@gmail.com">rai12345suman@gmail.com</a></span>
+    </p>
+   
+</section>
+
+<section class="contact">
+    <header>
+        <h3>Address</h3>
+    </header>
+    <p>
+        <br />
+        SPMS 
+    </p>
+</section>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SPMS.Models.PerformanceIndex>
+
+@{
+    ViewBag.Title = "PrfrmIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>PrfrmIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rollno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Performance)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rollno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Performance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssignmentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AssignmentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AssignmentId  })
+            
+        </td>
+    </tr>
+}
+
+</table>

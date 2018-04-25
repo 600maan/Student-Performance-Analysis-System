@@ -1,0 +1,18 @@
+﻿
+        <ul class="sub-menu">
+            @{
+                int i = 0;
+                foreach (var item in ViewBag.et)
+                {
+                    string name = ViewBag.et[i];
+                <li>
+                    @Ajax.ActionLink(name, "ShowResult", "Exam", new { studentList = ViewBag.studentList, ExamType = name }, new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace, LoadingElementId = "ajax-loader" })
+                </li>
+                    i++;
+                }
+            }
+        </ul>
+  
+
+
+

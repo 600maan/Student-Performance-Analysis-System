@@ -1,0 +1,99 @@
+﻿@model SPMS.Models.Fee
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fee</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityDeposit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityDeposit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LaboratoryCharges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaboratoryCharges)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SwimmingFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SwimmingFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthlyTutionFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthlyTutionFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthlyHostelFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthlyHostelFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthlyTransportationFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthlyTransportationFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdmissionFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdmissionFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StationaryCharges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StationaryCharges)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FeeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

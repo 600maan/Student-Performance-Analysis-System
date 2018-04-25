@@ -1,0 +1,16 @@
+﻿
+        <ul>
+            @{
+                int i = 0;
+                foreach (var item in ViewBag.et)
+                {
+                    string name = ViewBag.et[i];
+                    <li>
+                        @Ajax.ActionLink(name, "UResultByClass", "Exam", new { classList = ViewBag.classList, ExamType = name }, new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace, LoadingElementId = "ajax-loader" })
+                    </li>
+                    i++;
+                }
+            }
+        </ul>
+    
+

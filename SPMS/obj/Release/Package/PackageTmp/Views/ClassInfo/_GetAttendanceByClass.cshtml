@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SPMS.Models.Attendance>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+
+    @using (Html.BeginForm("Index","Attendance",FormMethod.Get))
+    {
+    <p>
+        Class: @Html.TextBox("searchString")<br />
+        
+
+
+        <input type="submit" value="Search" />
+    
+
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rollno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttdStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rollno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttdStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AttendanceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AttendanceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AttendanceId })
+        </td>
+    </tr>
+}
+
+</table>

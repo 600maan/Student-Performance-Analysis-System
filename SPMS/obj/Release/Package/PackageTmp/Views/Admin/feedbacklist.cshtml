@@ -1,0 +1,41 @@
+﻿@model PagedList.IPagedList<SPMS.Models.Feedback>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "feedbacklist";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Feedbacks sent by users</h2>
+
+<table>
+    <tr>
+        <th>
+            Sender Name
+        </th>
+        <th>
+            Message
+        </th>
+        <th>
+            Feedback To
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.senderName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fdbkTo)
+        </td>
+        
+    </tr>
+}
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.PageNumbersOnly, new AjaxOptions {UpdateTargetId="abc",InsertionMode=InsertionMode.Replace}))

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SPMS.Models.ExamNotification>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Exam</th>
+                <th>Result Date</th>
+            </tr>
+        
+            
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem=>item.ExamType)
+        </td>
+    <td>
+        @Html.DisplayFor(modelItem=>item.ResultDate.Date)
+    </td>
+        </tr>
+}
+           
+            
+        </table>

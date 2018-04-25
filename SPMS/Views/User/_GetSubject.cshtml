@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SPMS.Models.Subject>
+Performance Graphs 
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@Ajax.ActionLink(item.SubjectName + " Progress Graph", "GetChart", new { subject = item.SubjectId }, new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace, LoadingElementId = "ajax-loader" })</li> 
+    }
+    <li>
+        @Ajax.ActionLink("Overall Progress Graph", "GetChart", new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace, LoadingElementId = "ajax-loader" })
+    </li>
+</ul>

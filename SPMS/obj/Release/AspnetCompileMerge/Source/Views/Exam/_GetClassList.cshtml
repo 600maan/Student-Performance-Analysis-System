@@ -1,0 +1,20 @@
+﻿<table class="table">
+    <tr>
+        <th>Select Class</th>
+        <td>
+            @using (Ajax.BeginForm("GetStudentList", "Exam", FormMethod.Get, new AjaxOptions { UpdateTargetId = "partialShow", HttpMethod = "POST", InsertionMode = InsertionMode.Replace }))
+            { 
+                @Html.DropDownList("classList",string.Empty)
+            }
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    $("#classList").change(function () {
+        $(this).parents("form").submit();
+    });
+</script>
+
+
+
+

@@ -1,0 +1,59 @@
+﻿@model SPMS.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<section id="loginForm">
+
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Admin Log in</legend>
+
+             <table id="tfhover" class="tftable" border="0">
+                <tr>
+                    <td>@Html.LabelFor(m => m.UserName) </td>
+                   <td> <input data-val="true" data-val-required="The User name field is required." id="UserName" name="UserName" type="text" value="" class="text-box"></td>
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Password) </td>
+                   <td> <input data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" class="text-box">  </td>
+                    @Html.ValidationMessageFor(m => m.Password)
+                </tr>
+                <tr>
+                
+                   <td> @Html.CheckBoxFor(m => m.RememberMe) </td>
+                   <td> @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })  </td>
+                </tr>
+            </table>
+            <input type="submit" value="Log in" class="button small blue"/>
+           @* <ol>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                </li>
+            </ol>
+            <input type="submit" value="Log in" />
+       *@ </fieldset>
+     
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

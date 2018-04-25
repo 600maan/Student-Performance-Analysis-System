@@ -1,0 +1,44 @@
+﻿@model IList<SPMS.Models.Attendance>
+@{
+    ViewBag.Title = "TakeAttendance";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>TakeAttendance</h2>
+@using (Html.BeginForm()) { 
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+<div>Date</div>@DateTime.Today.Date
+        <table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].ClassId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].AttendanceStatus)
+        </th>      
+    </tr>
+@for (var i = 0; i < Model.Count();i++ )
+{
+    @Html.HiddenFor(modelItem=>modelItem[i].StudentId)
+    @Html.HiddenFor(modelItem=>modelItem[i].Date)
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem[i].ClassId)
+            @Html.HiddenFor(modelItem => modelItem[i].ClassId)
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem =>modelItem[i].StudentName)
+             @Html.HiddenFor(modelItem =>modelItem[i].StudentName)
+        </td>
+        <td>
+            @Html.CheckBoxFor(modelItem =>modelItem[i].AttendanceStatus)
+        </td>
+    </tr>
+}
+</table>
+    <input type="submit" value="OK" />  
+}

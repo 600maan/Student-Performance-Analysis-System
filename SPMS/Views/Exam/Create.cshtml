@@ -1,0 +1,59 @@
+﻿@model SPMS.Models.Exam
+
+@{
+    ViewBag.Title = "Add Marksheet";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Exam Creation</h2>
+
+<fieldset>
+    <legend>Exam</legend>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ClassId)
+    </div>
+    <div class="editor-field">
+        @Html.Action("ClassList")
+    </div>
+    @using (Html.BeginForm())
+    { 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExamType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ExamType, ViewBag.ExamType as SelectList, string.Empty)
+            @Html.ValidationMessageFor(model => model.ExamType)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubjectId)
+        </div>
+        <div id="showSubject">
+            <input type="text" />
+        </div>
+        <div class="editor-field">
+            @Html.ValidationMessageFor(model => model.SubjectId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FullMarks)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FullMarks)
+            @Html.ValidationMessageFor(model => model.FullMarks)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PassMarks)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PassMarks)
+            @Html.ValidationMessageFor(model => model.PassMarks)
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+
+     
+        
+    }
+
+</fieldset>
+

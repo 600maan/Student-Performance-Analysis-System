@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SPMS.Models.Student>
+@using SPMS.Infrastructure;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/jquery.dataTables.min.css">
+
+<script type="text/javascript" charset="utf8" src="~/Scripts/jquery.dataTables.min.js"></script>
+
+<h2>Students</h2>
+
+<p >                        
+   <a href="/Student/AddStudent" class="text-shadow">Enroll New Student</a>
+    <link href='http://fonts.googleapis.com/css?family=Norican' rel='stylesheet' type='text/css'>
+</p>
+
+<table id="student-list" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>School ID</th>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Class</th>
+            <th>Date of Birth</th>
+            <th>Enrolled Date</th>
+            <th>Gender</th>
+            <th>City</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>                
+        @{  foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StdSchoolId)
+                    </td>
+                    <td>@Html.HelperConcat(item.StudentFirstName, item.StudentMiddleName, item.StudentLastName)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rollno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassId)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateofBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrolledDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>
+
+@*Using Datatable plugin of jQuery for Paging Sorting and Searching*@
+<script>
+    $(document).ready(function () {
+    $('#student-list').DataTable();
+    });
+</script>
+
+
+
+

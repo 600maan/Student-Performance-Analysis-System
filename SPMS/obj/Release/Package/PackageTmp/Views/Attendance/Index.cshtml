@@ -1,0 +1,67 @@
+﻿@model SPMS.Models.Attendance
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/customJquery/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+<script src="~/customJquery/jquery-ui-1.10.4.custom.js"></script>
+
+<h2>Attendance</h2>
+@ViewBag.ErrorMsg
+<div id="hide">
+    @using (Html.BeginForm())
+    { 
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend></legend>
+            <div class="editor-label">
+                @Html.DisplayName("Class")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("DropdownClass", "Select Class")
+                @Html.ValidationMessageFor(model => model.ClassId)
+            </div>
+            <br />
+            <input type="submit" value="GO" class="shiny-button"/>
+        </fieldset>
+ 
+    }
+    <p><a>View Attedance</a></p>
+</div>
+
+<div id="viewattendance">
+    <a>Take New Attedance</a>
+    @using (Html.BeginForm("AttendanceTaken", "Attendance", FormMethod.Get))
+    { 
+        <div>
+            @Html.DisplayName("Class")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("DropdownClass", "Select Class")
+            @Html.ValidationMessageFor(model => model.ClassId)
+        </div>
+        @Html.DisplayName("Date")
+        @Html.Editor("date")
+        <input type="submit" value="View" />
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#viewattendance").hide();
+
+
+        $("p").click(function () {
+            $("#viewattendance").show();
+            $("#hide").hide();
+        });
+        $("a").click(function () {
+            $("#viewattendance").hide();
+            $("#hide").show();
+        });
+    });
+    $(function () {
+        $("#date").datepicker();
+    });
+</script>

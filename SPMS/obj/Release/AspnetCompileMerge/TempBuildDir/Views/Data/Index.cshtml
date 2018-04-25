@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Data WareHouse";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Data WareHouse</h2>
+@Ajax.ActionLink("Search Pass out Students","XStudents",new AjaxOptions{UpdateTargetId="partialcontainer",InsertionMode=InsertionMode.Replace})
+<br />
+@Ajax.ActionLink("Data Analysis","DataAnalysis",new AjaxOptions{UpdateTargetId="partialcontainer",InsertionMode=InsertionMode.Replace})
+<div id="partialcontainer"></div>

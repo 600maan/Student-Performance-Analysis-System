@@ -1,0 +1,14 @@
+﻿@model SPMS.Models.ClassInfo
+
+
+@using (Ajax.BeginForm("GetSubjectList", "Exam", FormMethod.Get, new AjaxOptions { UpdateTargetId = "showSubject", HttpMethod = "POST", InsertionMode = InsertionMode.Replace }))
+{ 
+    @Html.DropDownListFor(model => model.ClassId, ViewBag.selectClass as SelectList, string.Empty)
+}
+
+<script type="text/javascript">
+    $("#ClassId").change(function () {
+        $(this).parents("form").submit();
+        $("#hide").hide();
+    });
+</script>

@@ -1,0 +1,84 @@
+﻿@model SPMS.Models.Teacher
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Teacher</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeacherFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherFirstName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.TeacherMiddleName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherMiddleName)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.TeacherLastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherLastName)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Street)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Street)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.City)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.City)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Country)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Country)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Qualification)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Qualification)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SubjectId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubjectId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TeacherId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

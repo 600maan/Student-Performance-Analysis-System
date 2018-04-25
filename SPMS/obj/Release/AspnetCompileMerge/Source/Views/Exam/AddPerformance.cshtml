@@ -1,0 +1,66 @@
+﻿@model IList<SPMS.Models.PerformanceIndex>
+
+@{
+    ViewBag.Title = "AddPerformance";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Add Performance</h2>
+<br />
+@Model[0].assignment.Date<br />
+@Html.DisplayName("Assignment Topic") : @Model[0].assignment.AssignmentTopic
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+        <h4>Assignment of Class : @Model[0].ClassId </h4>
+    <h4>Full Marks : @Model[0].assignment.FullMarks</h4>
+        <hr />
+    <br />
+    
+        @Html.ValidationSummary(true)
+       <table>
+            <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model=>model[0].AssignmentId)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model[0].student.Rollno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].StudentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].MarksObtained)
+                </th>
+            </tr>
+           @for(var i=0;i<Model.Count();i++)
+           {
+                 <tr>
+                     @Html.HiddenFor(model=>model[i].PerformanceId)
+                     @Html.HiddenFor(model => model[i].AssignmentId)
+                     @Html.HiddenFor(model => model[i].StudentId)
+                <td>
+                    @Html.DisplayFor(model=>model[i].student.Rollno)
+                </td>
+                <td>
+                    @Html.HiddenFor(model => model[i].StudentName)
+                    @Html.DisplayFor(model=>model[i].StudentName)
+                </td>
+                <td>
+                    @Html.EditorFor(model=>model[i].MarksObtained)
+                </td>
+            </tr>
+           }
+
+
+        </table>
+     <input type="submit" value="Submit" />
+        
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

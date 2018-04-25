@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SPMS.Models.ClassInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Class</h2>
+<p>@*<a href="/ClassInfo/Create">Create New</a>*@
+     <a href="/ClassInfo/Create" class="text-shadow">Create New</a>
+    <link href='http://fonts.googleapis.com/css?family=Norican' rel='stylesheet' type='text/css'>
+  
+
+   @* @Html.ActionLink("Create New", "Create")*@
+</p>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayName("Class ")
+        </th>
+    <br> </br>  
+         <th>
+            @Html.DisplayName("Class Teacher")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.teacher.TeacherFirstName) @Html.DisplayFor(modelItem => item.teacher.TeacherMiddleName) @Html.DisplayFor(modelItem => item.teacher.TeacherLastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ClassId }) |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.ClassId })
+            </td>
+        </tr>
+    }
+
+</table>

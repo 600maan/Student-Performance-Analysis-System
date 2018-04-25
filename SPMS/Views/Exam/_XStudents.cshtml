@@ -1,0 +1,16 @@
+﻿<h2>Pass out Students</h2>
+@using (Ajax.BeginForm("GetXStudents", "Data", new AjaxOptions { UpdateTargetId = "display", InsertionMode = InsertionMode.Replace }))
+{
+    <label>Batch : </label>
+    @Html.DropDownList("Batch", new SelectList(
+        new[] { new { Text = "Select Year", Value = (string)null } }.Concat(
+        Enumerable.Range(2010, DateTime.Today.Year)
+            .Select(r => new
+                             {
+                                 Text = new DateTime(r, 1, 1).ToString("yyyy"),
+                                 Value = r.ToString()
+                             })),
+        "Value", "Text"))
+    <input type="submit" value="Ok" />
+}
+<div id="display"></div>

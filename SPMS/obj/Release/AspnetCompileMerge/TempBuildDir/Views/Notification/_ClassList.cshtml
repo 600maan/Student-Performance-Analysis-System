@@ -1,0 +1,11 @@
+﻿
+@using (Ajax.BeginForm("GetStudentList", "Notification", FormMethod.Get, new AjaxOptions { UpdateTargetId = "showstudent", HttpMethod = "POST", InsertionMode = InsertionMode.Replace }))
+{ 
+    @Html.DropDownList("classid", ViewBag.selectClass as SelectList, string.Empty)
+}
+
+<script type="text/javascript">
+    $("#classid").change(function () {
+        $(this).parents("form").submit();
+    });
+</script>

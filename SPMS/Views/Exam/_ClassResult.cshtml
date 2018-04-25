@@ -1,0 +1,34 @@
+﻿@model IList<SPMS.Models.Result>
+<table class="table table-striped">
+    <tr>
+        <th>SN</th>
+        <th> @Html.DisplayNameFor(model => model[0].StudentName) </th>
+
+        @foreach (var subject in ViewBag.subjects)
+        {
+            <th>@subject.SubjectName</th>
+        }
+
+        <th>Total Score</th>
+        <th>Rank</th>
+    </tr>
+    @{
+
+        int z = 0;
+        foreach (var student in ViewBag.students)
+        {
+            z++;
+            int total = 0;
+            <tr>
+                <td>@z</td>
+                <td>@student.StudentFirstName @student.StudentMiddleName @student.StudentLastName</td>
+                @foreach(var item in Model) {
+                    if (item.StudentId == student.StudentId) {
+                        total += item.MarksObtained;
+                        <td>@Html.DisplayFor(modelItem => item.MarksObtained)</td>  }
+                    }       
+                <td>@total</td>
+            </tr>
+            }
+        }
+</table>

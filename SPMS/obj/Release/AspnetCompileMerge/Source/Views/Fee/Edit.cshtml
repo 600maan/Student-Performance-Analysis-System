@@ -1,0 +1,109 @@
+﻿@model SPMS.Models.Fee
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+</br>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.FeeId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClassName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClassName)
+                @Html.ValidationMessageFor(model => model.ClassName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SecurityDeposit, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SecurityDeposit)
+                @Html.ValidationMessageFor(model => model.SecurityDeposit)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LaboratoryCharges, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LaboratoryCharges)
+                @Html.ValidationMessageFor(model => model.LaboratoryCharges)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SwimmingFee, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SwimmingFee)
+                @Html.ValidationMessageFor(model => model.SwimmingFee)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MonthlyTutionFee, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MonthlyTutionFee)
+                @Html.ValidationMessageFor(model => model.MonthlyTutionFee)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MonthlyHostelFee, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MonthlyHostelFee)
+                @Html.ValidationMessageFor(model => model.MonthlyHostelFee)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MonthlyTransportationFee, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MonthlyTransportationFee)
+                @Html.ValidationMessageFor(model => model.MonthlyTransportationFee)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AdmissionFee, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AdmissionFee)
+                @Html.ValidationMessageFor(model => model.AdmissionFee)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BookFee, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BookFee)
+                @Html.ValidationMessageFor(model => model.BookFee)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StationaryCharges, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StationaryCharges)
+                @Html.ValidationMessageFor(model => model.StationaryCharges)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

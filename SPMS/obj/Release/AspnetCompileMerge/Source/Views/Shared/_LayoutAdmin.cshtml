@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Moniter students.</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/admincss")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/_references.js"></script>
+</head>
+<body>
+    <header class="page-header">
+        <div class="content-main">
+            @RenderSection("jquery-place", required: false)
+            <div class="float-left">
+                <p class="site-title">
+                    <a href="@Url.Action("Index", "Admin")">
+                        <img src="../../Images/SPMS_Logo.png" alt="" />
+                    </a>
+                </p>
+            </div>
+            <nav>
+                <ul class="nav nav-tabs" role="tablist">
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Class", "Index", "ClassInfo")</li>
+                        <li>@Html.ActionLink("Teacher", "Index", "Teacher")</li>
+                        <li>@Html.ActionLink("Subject", "Index", "Subject")</li>
+                        <li>@Html.ActionLink("Student", "Index", "Student")</li>
+
+                    }
+                    <li>@Html.ActionLink("Exam", "Index", "Exam")</li>
+                    <li>@Html.ActionLink("Attendance", "Index", "Attendance")</li>
+
+                </ul>
+            </nav>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Register New User", "RegisterAndAssignRoles", "Admin")
+
+                    }
+                </section>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar-wrapper" style="float: left; width: 15%">
+        <ul id="menu">
+
+            <li>@Html.ActionLink("Fee Structure", "Index", "Fee")</li>
+
+            @if (User.IsInRole("admin"))
+            {
+                <li>@Html.ActionLink("Accounting", "Index", "Accounting")</li>
+            }
+
+            <li>@Html.ActionLink("Feedbacks", "feedbacklist", "Admin")</li>
+            <li>Notify
+                    <ul>
+                        <li>@Html.ActionLink("Notices", "Index", "Notification")</li>
+                        <li>@Html.ActionLink("Exam Notification", "ExamCreate", "Exam")</li>
+                    </ul>
+            </li>
+            <li>@Html.ActionLink("Data WareHouse","Index","Data")</li>
+            <li>Live Meeting
+            <ul>
+                <li>@Html.ActionLink("Set Meeting", "Meeting", "Notification")</li>
+                <li>@Html.ActionLink("Live Meeting", "VChat", "User")</li>
+            </ul>
+            </li>
+
+        </ul>
+
+
+        <script>
+            $(function () {
+                $("#menu").menu();
+            });
+        </script>
+        <style>
+            .ui-menu {
+                width: 150px;
+            }
+        </style>
+
+    </div>
+    <div class="content-main" style="float: left">
+        <div id="bodynext">
+            @RenderSection("featured", required: false)
+            <section class="content-main main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+    <footer>
+        <div class="content-main">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Student Performance Monitering System</p>
+            </div>
+        </div>
+    </footer>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

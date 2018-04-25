@@ -1,0 +1,75 @@
+﻿@model SPMS.Models.ExamNotification
+
+@{
+    ViewBag.Title = "Exam";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@*@Html.ActionLink("Create All Exams", "OverAllExam")*@
+<p>
+<link href='http://fonts.googleapis.com/css?family=Norican' rel='stylesheet' type='text/css'>
+</p>
+<fieldset>
+    <legend>Exam Creation</legend>
+        @using (Html.BeginForm())
+    { 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExamType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ExamType, ViewBag.ExamType as SelectList, string.Empty)
+            @Html.ValidationMessageFor(model => model.ExamType)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Batch)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model=>model.Batch)*@
+            @Html.ValidationMessageFor(model => model.Batch)
+            @Html.DropDownListFor(model => model.Batch, new SelectList(
+        new[] { new { Text = "Select Year", Value = (string)null } }.Concat(
+        Enumerable.Range(2013, 2030)
+            .Select(r => new
+                             {
+                                 Text = new DateTime(r, 1, 1).ToString("yyyy"),
+                                 Value = r.ToString()
+                             })),
+        "Value","Text"))
+        </div>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.Start)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model=>model.Start)
+            @Html.ValidationMessageFor(model => model.Start)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.End)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model=>model.End)
+            @Html.ValidationMessageFor(model => model.End)
+        </div>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.ResultDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model=>model.ResultDate)
+            @Html.ValidationMessageFor(model => model.ResultDate)
+        </div>
+            <br />
+        <div>
+            <input type="submit" value="Submit"  class="shiny-button"/>
+        </div>
+    }
+
+</fieldset>
+
+<script>
+    $(function () {
+        $("#Batch").datepicker({ changeMonth:true,changeYear: true });
+        $("#Start").datepicker({ changeMonth: true, changeYear: true});
+        $("#End").datepicker({ changeMonth: true, changeYear: true });
+        $("#ResultDate").datepicker({ changeMonth: true, changeYear: true });
+    });
+
+</script>

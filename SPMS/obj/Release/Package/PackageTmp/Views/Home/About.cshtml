@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@section sidemenu{
+
+    <ul id="menu">
+
+        <li>@Html.ActionLink("Login", "Login", "User")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    </ul>
+    <style>
+        .ui-menu {
+            width: 150px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#menu").menu();
+        });
+    </script>
+}
+<hgroup class="title">
+    
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    <p class="feature">
+        <a href="~/Admin/Book">Books</a>
+    </p>
+
+    <p class="feature">
+       <a href="~/Admin/Result">Previous Results</a>
+    </p>
+
+    <p class="feature">
+        <a href="~/Home/Calender">Academic Calender</a>
+    </p>
+</article>
+
+<aside>
+    <h3>Features</h3>
+    <p>
+       SPMS supports:
+    </p>
+    <ul>
+        <li>online payment of fees</li>
+        <li>online monitering of student</li>
+        <li>analysing and suggesting</li>
+        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+    </ul>
+</aside>

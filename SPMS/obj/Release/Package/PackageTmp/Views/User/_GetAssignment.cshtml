@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SPMS.Models.PerformanceIndex>
+<link rel="stylesheet" type="text/css" href="~/Content/jquery.dataTables.min.css">
+
+<script type="text/javascript" charset="utf8" src="~/Scripts/jquery.dataTables.min.js"></script>
+
+<table id="student-assignment" class="table table-striped">
+    <thead>
+    <tr>
+    <th>SN</th>
+    <th>Assignment Topic</th>
+    <th>Subject</th>
+    <th>Full Marks</th>
+    <th>Marks Obtained</th>
+    <th>Remarks</th>
+    </tr>
+    </thead>
+    <tbody>
+        @{  int i = 0;
+            foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.assignment.AssignmentTopic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.assignment.subject.SubjectName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.assignment.FullMarks)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MarksObtained)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Remarks)
+                    </td>
+
+                </tr>
+
+            }
+        }
+    </tbody>    
+</table>
+
+@*Using Datatable plugin of jQuery for Paging Sorting and Searching*@
+<script>
+    $(document).ready(function () {
+    $('#student-assignment').DataTable();
+    });
+</script>
+
+

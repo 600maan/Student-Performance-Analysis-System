@@ -1,0 +1,7 @@
+﻿@model PagedList.IPagedList<SPMS.Models.Exam>
+@using PagedList.Mvc
+<div id="ShowExam">
+@Html.Partial("_ExamList",Model)
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("ViewResult", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(PagedListRenderOptions.PageNumbersOnly, new AjaxOptions {UpdateTargetId="ExamHolder",InsertionMode=InsertionMode.Replace}))
+</div>

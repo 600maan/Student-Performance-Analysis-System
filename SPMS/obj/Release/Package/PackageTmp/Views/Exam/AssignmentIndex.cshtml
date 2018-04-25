@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SPMS.Models.Assignment>
+
+@{
+    ViewBag.Title = "AssignmentIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>AssignmentIndex</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignmentTopic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToSubmitDate)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subject.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignmentTopic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToSubmitDate)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssignmentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AssignmentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AssignmentId }) |
+            @Html.ActionLink("Add Performance", "AddPerformance", new { id = item.AssignmentId })
+
+
+        </td>
+    </tr>
+}
+
+</table>

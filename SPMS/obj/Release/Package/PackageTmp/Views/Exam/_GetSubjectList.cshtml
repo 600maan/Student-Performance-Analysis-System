@@ -1,0 +1,5 @@
+﻿@*@model SPMS.Models.Exam*@
+<div id="createExam">
+              @Html.DropDownList("SubjectId", ViewBag.SubjectId as SelectList, string.Empty)
+            @Html.Hidden("ClassId")
+</div>

@@ -1,0 +1,75 @@
+﻿@model SPMS.Models.Accounting
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Accounting</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rollno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rollno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StdSchoolId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StdSchoolId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TobePaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TobePaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Due)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Due)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

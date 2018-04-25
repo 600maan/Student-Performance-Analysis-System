@@ -1,0 +1,19 @@
+﻿@model IEnumerable<SPMS.Models.ClassInfo>
+
+@foreach (var item in Model)
+{
+    <table>
+        <tr>
+            <td>
+                @Ajax.ActionLink(item.ClassName, "GetAttendanceByClass", "ClassInfo", new { id = item.ClassId }, new AjaxOptions
+           {
+              
+               HttpMethod = "POST",
+               InsertionMode = InsertionMode.Replace
+           })
+            </td>
+        </tr>
+
+    </table>
+
+}

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SPMS.Models.Exam>
+
+@{
+    ViewBag.Title = "Exam-Section";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<h2>Exam Section</h2>
+<link href="~/Content/exam-menu.css" rel="stylesheet" />
+
+<ul class="exam-menu">
+    <li>
+        @Html.ActionLink("Assignment", "GiveAssignment", "Exam")
+    <ul>
+        <li>
+            @Html.ActionLink("Create Assignment", "GiveAssignment", "Exam")
+        </li>
+        <li>
+            @Html.ActionLink("View Assignment", "AssignmentIndex", "Exam")
+        </li>
+    </ul>
+</li>
+<li>
+    @Html.ActionLink("Exam", "ExamCreate", "Exam")
+<ul>
+    <li>
+        @Html.ActionLink("Create Exam", "ExamCreate", "Exam")
+    </li>
+    <li>
+        @Html.ActionLink("View Exam", "ViewExam", "Exam")
+    </li>
+</ul>
+</li>
+<li>
+    @Html.ActionLink("Results", "ViewResult")
+<ul class="sub-menu">
+    <li>@Html.ActionLink("Result By Exam", "ViewResult")</li>
+    <li>
+        @Html.ActionLink("Result By Student", "ResultByStudent")
+    </li>
+    <li>
+        @Html.ActionLink("Result By Class", "ResultByClass")
+    </li>
+</ul>
+</li>
+
+</ul>
+<script>
+    $(function () {
+        $("#menu").menu();
+    });
+</script>
+<style>
+    .ui-menu {
+        width: 150px;
+    }
+</style>

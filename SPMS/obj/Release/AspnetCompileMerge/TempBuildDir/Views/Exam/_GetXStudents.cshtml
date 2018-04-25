@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SPMS.Models.Student>
+@using SPMS.Infrastructure
+
+<table class="table table-striped">
+    <tr>
+        <th>Batch
+        </th>
+        <th>StdSchoolId
+        </th>
+        <th>Name
+        </th>
+        <th>Gender
+        </th>
+        <th>Street
+        </th>
+        <th>City
+        </th>
+        <th>Country
+        </th>
+        <th>ClassId
+        </th>
+        <th>Rollno
+        </th>
+        <th>DateofBirth
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrolledDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StdSchoolId)
+            </td>
+            <td>
+                @Html.HelperConcat(item.StudentFirstName, item.StudentMiddleName, item.StudentLastName)
+            </td>
+            <td>
+                @{
+        if (item.Gender == false)
+        { @Html.Label("Female")}
+        if (item.Gender == true)
+        { @Html.Label("Male")}
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rollno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+            <td>
+                @Ajax.ActionLink("Details", "Details", new { id = item.StudentId }, new AjaxOptions { UpdateTargetId = "partialcontainer", InsertionMode = InsertionMode.Replace })
+            </td>
+        </tr>
+    }
+
+</table>

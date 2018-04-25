@@ -1,0 +1,65 @@
+﻿@model SPMS.Models.EmailSend
+@{
+    ViewBag.Title = "EmailNotifications";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Send Email Notifications</h2>
+
+    <div><a id="clickme">Send Email to single student's parent</a> </div>
+<br />
+
+<table id="single">
+    <tr>
+            <td>Select Class</td>
+            <td>@Html.Action("ClassList")</td>
+        </tr>
+    </table>
+    @using (Html.BeginForm())
+    {
+        <table>
+        <tr id="wholeclass">
+            <td>Select Class</td>
+            <td id="showclass">@Html.DropDownList("classid", ViewBag.classlist as SelectList,string.Empty)</td>
+        </tr>
+            <tr id="hidestudent">
+                <td>
+                    Select Student
+                </td>
+                <td><div id="showstudent"></div></td>
+            </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.EmailSubject)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.EmailSubject)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.EmailBody)</td>
+            <td>
+                @Html.TextAreaFor(model => model.EmailBody)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Send" />
+
+            </td>
+        </tr>
+</table>
+ 
+    }
+
+<script>
+    $(document).ready(function () {
+        $("#single").hide();
+        $("#hidestudent").hide();
+    });
+    $("#clickme").click(function () {
+        $("#single").show();
+        $("#hidestudent").show();
+        $("#wholeclass").hide();
+    });
+</script>

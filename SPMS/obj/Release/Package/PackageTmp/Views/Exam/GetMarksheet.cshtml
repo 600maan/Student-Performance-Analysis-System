@@ -1,0 +1,26 @@
+﻿@model SPMS.Models.Result
+
+@{
+    ViewBag.Title = "GetMarksheet";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>GetMarksheet</h2>
+
+@Html.Action("GetClassList")
+@using(Ajax.BeginForm("ShowResult", "Exam", new AjaxOptions {UpdateTargetId="showmarksheet",InsertionMode=InsertionMode.Replace })){
+
+<div id="partialShow">
+    <table>
+        <tr>
+            <th>Select Student</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Select Exam Type</th>
+            <td></td>
+        </tr>
+    </table>
+</div>
+}
+<div id="showmarksheet"></div>

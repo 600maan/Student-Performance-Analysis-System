@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SPMS.Models.ChartData>
+@using JQChart.Web.Mvc
+@Scripts.Render("~/bundles/jqchart")
+@Styles.Render("~/Content/jqchart")
+@{string sname = ViewBag.sname; }
+@(Html.JQChart()
+                .Chart(Model)
+                .ID("jqChart")
+                .Width(500)
+                .Height(300)
+                .Title(sname)
+                .Legend(legend => legend.Title("Legend"))
+                .Axes(axis =>
+                    {
+                        axis.CategoryAxis(Location.Bottom).ZoomEnabled(true);
+                    }
+                )
+                .Series(series =>
+                    {
+                        series.Column().Title("Column")
+                                       .XValues(m => m.Label)
+                                       .YValues(m => m.Value);
+
+                        series.Spline().Title("Spline")
+                                       .XValues(m => m.Label)
+                                       .YValues(m => m.Value);
+                    }
+                )
+                .Render()
+          )
+
+
+@*<img src="@Url.Action("CustomReport", "User", new { key = ViewBag.GraphKey })" />*@

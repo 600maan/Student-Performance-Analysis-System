@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SPMS.Models.Fee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="active">Fee Details</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecurityDeposit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LaboratoryCharges)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SwimmingFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlyTutionFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlyHostelFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlyTransportationFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdmissionFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StationaryCharges)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecurityDeposit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaboratoryCharges)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SwimmingFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyTutionFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyHostelFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyTransportationFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdmissionFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StationaryCharges)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FeeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FeeId }) 
+           
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,11 @@
+﻿@{
+    string[] _xval = { "vulpes", "Sp Nayak", "Krishna", "Datta Kharad", "Prabhu Raja" };
+    string[] _yval = { "235", "130", "30", "25", "15" };
+
+    var chart = new Chart(width: 500, height: 300, theme: ChartTheme.Vanilla3D)
+.AddSeries(
+chartType: "Column", legend: "Mindcracker Current Month Runner up",
+xValue: _xval,
+yValues: _yval)
+.Write();
+}

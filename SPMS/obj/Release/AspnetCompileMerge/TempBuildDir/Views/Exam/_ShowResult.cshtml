@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SPMS.Models.Result>
+
+<h2>@Html.Display("examtype")</h2>
+<h2>Percentage : @ViewBag.percentage %</h2> 
+<table class="table table-striped">
+    <tr>
+        <th>S.N</th>
+            <th>
+            @Html.DisplayNameFor(model => model.exam.SubjectName)
+        </th>
+        <th>@Html.DisplayNameFor(model=>model.exam.FullMarks)</th>
+        <th>@Html.DisplayNameFor(model=>model.exam.PassMarks)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarksObtained)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+    </tr>
+
+    @{
+    int i=0;    
+    foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>@i</td>           
+            <th>
+                @Html.DisplayFor(modelItem => item.exam.SubjectName)
+            </th>
+            <td>@Html.DisplayFor(modelItem=>item.exam.FullMarks)</td>
+            <td>@Html.DisplayFor(modelItem=>item.exam.PassMarks)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksObtained)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+        </tr>
+    }
+    }
+</table>

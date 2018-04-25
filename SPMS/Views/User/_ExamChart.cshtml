@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SPMS.Models.ChartData>
+@using JQChart.Web.Mvc
+@Scripts.Render("~/bundles/jqchart")
+@Styles.Render("~/Content/jqchart")
+@(Html.JQChart()
+                .Chart(Model)
+                .ID("jqChart")
+                .Width(500)
+                .Height(300)
+                .Title("Exam Chart")
+                .Animation(TimeSpan.FromSeconds(1))
+                .Shadows(true)
+                .Series(series =>
+                {
+                    series.Column()
+                          .Title("Science")
+                          .FillStyle("#418CF0")
+                          .XValues(el => el.Label)
+                          .YValues(el => el.Value);
+
+                    series.Column()
+                          .Title("Math")
+                          .FillStyle("#FCB441")
+                          .XValues(el => el.Label)
+                          .YValues(el => el.Value1);
+
+
+                    series.Column()
+                          .Title("Social")
+                          .FillStyle("#009933")
+                          .XValues(el => el.Label)
+                          .YValues(el => el.Value2);
+
+                    series.Column()
+                          .Title("English")
+                          .FillStyle("#FF0000")
+                          .XValues(el => el.Label)
+                          .YValues(el => el.Value3);
+
+                }
+                )
+                .Render()
+          )

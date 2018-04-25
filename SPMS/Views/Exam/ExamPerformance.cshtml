@@ -1,0 +1,61 @@
+﻿@model IList<SPMS.Models.Result>
+
+@{
+    ViewBag.Title = "ExamPerformance";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ExamPerformance</h2>
+
+@using (Html.BeginForm()) { 
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].ExamId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Rollno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].MarksObtained)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Remarks)
+        </th>
+       
+    </tr>
+
+@for (int i = 0; i < Model.Count();i++ )
+{
+    <tr>
+        <td>
+            @Html.HiddenFor(model=>model[i].StudentId)
+            @Html.HiddenFor(model=>model[i].ResultId)
+            @Html.HiddenFor(model=>model[i].ExamId)
+            @Html.DisplayFor(model => model[i].ExamId)
+        </td>
+        <td>
+            @Html.HiddenFor(model=>model[i].StudentName)
+            @Html.DisplayFor(model => model[i].StudentName)
+        </td>
+        <td>
+            @Html.HiddenFor(model=>model[i].Rollno)
+            @Html.DisplayFor(model => model[i].Rollno)
+        </td>
+        <td>
+            @Html.EditorFor(model => model[i].MarksObtained)
+        </td>
+        <td>
+            @Html.EditorFor(model => model[i].Remarks)
+        </td>
+        
+    </tr>
+}
+
+</table>
+    <input type="submit" value="Submit" />
+}

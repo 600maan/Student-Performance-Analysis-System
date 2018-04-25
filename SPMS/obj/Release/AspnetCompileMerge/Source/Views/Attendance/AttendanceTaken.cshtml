@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SPMS.Models.Attendance>
+
+@{
+    ViewBag.Title = "AttendanceTaken";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>AttendanceTaken</h2>
+
+<table class="table">
+    <tr>
+        <th>S.N</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttendanceStatus)
+        </th>
+    </tr>
+
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClassId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+
+                <td>
+                    @{
+            if (item.AttendanceStatus == false)
+            {
+                @Html.Label("Absent")
+            }
+            else
+            {
+                @Html.Label("Present")
+            }
+
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+@Html.ActionLink("Back to home", "Index", "Admin")

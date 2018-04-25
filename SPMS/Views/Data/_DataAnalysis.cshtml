@@ -1,0 +1,13 @@
+﻿@Ajax.ActionLink("Analyze All Data", "OverallAnalysis","Data", new AjaxOptions { UpdateTargetId = "partialcontainer", InsertionMode = InsertionMode.Replace })
+<br />
+@Ajax.ActionLink("Analyze From Specific Batch", "BatchwiseAnalysis","Data", new AjaxOptions { UpdateTargetId = "partialcontainer", InsertionMode = InsertionMode.Replace })
+<h3>Data Analysis For</h3>
+@using (Ajax.BeginForm("ClasswiseAnalysis", "Data", new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }))
+{ 
+    <p>
+        @Html.DisplayName("Class")  :
+        @Html.DropDownList("Classid", ViewBag.Classlist as SelectList, "Select Class")
+        <input type="submit" value="Analyze" />
+    </p>
+}
+<div id="result"></div>

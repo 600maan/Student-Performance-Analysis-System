@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "STUDENT PERFORMANCE MONITERING SYSTEM";
+    <a href="~/Views/Shared/_Layout.cshtml"></a>
+}
+@section sidemenu{
+
+    <ul id="menu">
+
+        <li>@Html.ActionLink("Login", "Login", "User")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    </ul>
+    <style>
+        .ui-menu {
+            width: 150px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#menu").menu();
+        });
+    </script>
+}
+@section featured {
+    <section class="featured">
+        <div id="body">
+            <div class="header">
+                <div class="body">
+                    <h1>@ViewBag.Title.</h1>
+                    <h2>@ViewBag.Message</h2>
+                    <p>
+                        A complete moniter of your student. We will always be for you and your children. We need your involvement. Be responsible.
+                    </p>
+
+                </div>
+
+                <div>
+                    <img alt="" src="~/Images/hands.jpg" />
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Events", "Event", "Academic")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Notices", "Notice", "Academic")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Holidays", "Notice", "Academic")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Recent Programs", "Programs", "Academic")
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+}
+<div class="footer">
+    <h3>Features:</h3>
+    <div>
+
+        <h5>Online Monitering</h5>
+        Parents, teachers can moniter the students online without having directly present.
+        Parents can know how their childrens are doing,performing in school.
+
+    </div>
+
+    <div>
+        <h5>Direct Involvement</h5>
+        Interaction among teachers and parents through the system makes everyone responsible for
+        a student's growth.
+    </div>
+
+</div>

@@ -1,0 +1,57 @@
+﻿@model IList<SPMS.Models.Attendance>
+
+@{
+    ViewBag.Title = "Edit Attendance";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit Attendance</h2>
+<br />
+@using (Html.BeginForm())
+{
+
+    @Html.DisplayNameFor(model => model[0].Date)  @Html.DisplayFor(model => model[0].Date)
+
+
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ClassId)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model[0].StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].AttendanceStatus)
+            </th>
+
+        </tr>
+
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            <tr>
+
+                <td>
+                    @Html.HiddenFor(model => model[i].ClassId)
+                    @Html.DisplayFor(model => model[i].ClassId)
+                </td>
+                @Html.HiddenFor(model => model[i].AttendanceId)
+                @Html.HiddenFor(model => model[i].Date)
+                @Html.HiddenFor(model => model[i].StudentId)
+
+                <td>
+                    @Html.HiddenFor(model => model[i].StudentName)
+                    @Html.DisplayFor(model => model[i].StudentName)
+                </td>
+                <td>
+
+                    @Html.CheckBoxFor(model => model[i].AttendanceStatus)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    <input type="submit" value="Ok" />
+}

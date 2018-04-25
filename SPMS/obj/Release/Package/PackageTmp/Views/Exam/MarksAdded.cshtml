@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SPMS.Models.Result>
+
+@{
+    ViewBag.Title = "Marks Added";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExamId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rollno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarksObtained)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=> item.Rollno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarksObtained)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=> item.Remarks)
+        </td>
+        
+    </tr>
+}
+
+</table>

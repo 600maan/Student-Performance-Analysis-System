@@ -1,0 +1,117 @@
+﻿@model SPMS.Models.Student
+@using SPMS.Infrastructure;
+@{
+    ViewBag.Title = "User Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section sidemenu{
+
+    <ul id="menu">
+
+        <li>
+            Results
+            <ul>
+                <li>Result Of Whole Class @Html.Action("GetClassExam")</li>
+                <li>Result Of Your Student @Html.Action("GetExam")</li>
+            </ul>
+        </li>
+        <li>@Ajax.ActionLink("Assignment", "GetAssignment", new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })</li>
+        <li>@Ajax.ActionLink("Attendance", "GetAttendance", new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" })</li>
+        <li>@Html.Action("GetSubject")</li>
+        <li>@Ajax.ActionLink("Exam Chart", "ExamChart", new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace })</li>
+        <li>
+            Notices
+            <ul>
+                <li>@Ajax.ActionLink("Notice of exam", "Noticeforresult", new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace })</li>
+                <li>@Ajax.ActionLink("Other notices and Events", "Othernotice", new AjaxOptions { UpdateTargetId = "overalldisplay", InsertionMode = InsertionMode.Replace })</li>
+            </ul>
+
+        </li>
+
+        <li>@Html.ActionLink("Video Conference", "VChat")</li>
+        <li>@Html.ActionLink("Log out","Index","Home")</li>
+
+
+    </ul>
+
+
+}
+<style>
+    .ui-menu {
+        width: 150px;
+    }
+</style>
+<script>
+    $(function () {
+        $("#menu").menu();
+    });
+</script>
+
+
+<div style="background-color:#efeded">
+    <table style="width:100%">
+           <tr>
+            <td valign="top">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            @Html.DisplayName(" Student School Id")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.StdSchoolId)
+                        </td>
+                        <td rowspan="5">
+                            <img src="@Model.ImageUrl " />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayName("Student Name ")
+
+                        </td>
+                        <td>@Html.HelperConcat(Model.StudentFirstName, Model.StudentMiddleName, Model.StudentLastName)</td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayName("Class")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ClassId)
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayName(" Roll Number")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Rollno)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayName("Batch")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.EnrolledDate)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <div id="ajax-loader" style="display: none">
+                    <img src="~/Content/Images/ajax-loader.gif" />
+                </div>
+                <div id="overalldisplay">
+                    @Html.Action("GetChart")
+                </div>
+            </td>
+            
+        </tr>
+    </table>
+
+
+
+</div>
+

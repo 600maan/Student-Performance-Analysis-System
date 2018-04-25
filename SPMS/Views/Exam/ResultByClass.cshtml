@@ -1,0 +1,25 @@
+﻿@model SPMS.Models.Result
+
+@{
+    ViewBag.Title = "ResultByClass";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Result By Class</h2>
+@using (Ajax.BeginForm(new AjaxOptions {UpdateTargetId="res",InsertionMode=InsertionMode.Replace }))
+{
+    <table class="table">
+        <tr>
+            <th>Class</th>
+            <td>@Html.DropDownList("classList")</td>
+        </tr>
+        <tr>
+            <th>Exam Type</th>
+            <td>@Html.DropDownList("ExamType")</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Okay" /></td>
+        </tr>
+    </table>
+}
+<div id="res"></div>

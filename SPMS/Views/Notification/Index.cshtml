@@ -1,0 +1,9 @@
+﻿@model IEnumerable<SPMS.Models.Notification>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Notifications</h2>
+@Html.ActionLink("Send Email Notifications","EmailNotifications")
+@Html.Partial("_GetNotifications",Model)

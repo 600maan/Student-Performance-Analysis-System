@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SPMS.Models.Notification>
+
+<p>
+    @Html.ActionLink("Create New Notification", "NoticeCreate")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>S.N</th>
+        <th>
+            Title
+        </th>
+        <th>
+            PublishedDate
+        </th>
+        <th>
+            NotificationType
+        </th>
+        <th>
+            ValidUpto
+        </th>
+        <th></th>
+    </tr>
+
+@{
+    int i=0;
+    foreach (var item in Model) {
+        i++;
+        <tr>
+            <td>@i</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NotificationType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValidUpto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NotificationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NotificationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NotificationId })
+        </td>
+    </tr>
+}
+}
+
+</table>

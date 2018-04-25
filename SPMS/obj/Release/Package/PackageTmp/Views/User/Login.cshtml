@@ -1,0 +1,128 @@
+﻿@model SPMS.Models.Parent
+
+@{
+    ViewBag.Title = "Login";
+    //Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section sidemenu{
+
+    <ul id="menu">
+
+        <li>@Html.ActionLink("Login", "Login", "User")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    </ul>
+    <style>
+        .ui-menu {
+            width: 150px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#menu").menu();
+        });
+    </script>
+}
+<section id="loginForm">
+
+
+    <hgroup class="title">
+            <h1>@ViewBag.Title.</h1>
+        </hgroup>
+
+
+    @using (Html.BeginForm("Login", "User", FormMethod.Post,
+
+    new { encType = "multipart/form-data", id = "myform", name = "myform", ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+
+            <legend>Hello Parent .. Enter Your Credentials</legend>
+    <p>Enter 1001 for username and password for demo</p>
+            <table id="tfhover" class="tftable">
+
+            
+                <tr>
+                    <td>@Html.DisplayName("User Name" )  </td>
+                   
+
+                    <td><input data-val="true" data-val-number="The field StdSchoolId must be a number." data-val-required="The StdSchoolId field is required." id="StdSchoolId" name="StdSchoolId" type="text" value="" class="text-box">
+                    </td>
+                        @Html.ValidationMessageFor(m => m.StdSchoolId)  
+                </tr>
+                
+              <tr>     
+                  <td> @Html.DisplayName("Password")  </td> 
+                  <td>  <input data-val="true" data-val-required="The UserPassword field is required." id="UserPassword" name="UserPassword" type="password" class="text-box">
+
+                  </td>
+                    @Html.ValidationMessageFor(m => m.UserPassword)
+               </tr> 
+            
+         </table>
+            <input type="submit" name="operation" id="process" value="Log In" class="button small blue"/>
+            
+ 
+            @*<ul>
+                <li>
+                    @Html.DisplayName("User Name")
+                    @Html.TextBoxFor(m => m.StdSchoolId)
+                    @Html.ValidationMessageFor(m => m.StdSchoolId)
+                </li>
+                <li>
+                    @Html.DisplayName("Password")
+                    @Html.PasswordFor(m => m.UserPassword)
+                    @Html.ValidationMessageFor(m => m.UserPassword)
+                </li>
+            </ul>
+            <input type="submit" name="operation" id="process" value="Log In" />
+       *@ </fieldset>
+
+    }
+</section>
+<div id="divProcessing" style="display:none">
+    <p>Processing, please wait . . . <img src="../../Content/Images/page-loader.gif"></p>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            // Hide the "busy" Gif at load:
+            $("#divProcessing").hide();
+
+            // Attach click handler to the submit button:
+            $('#process').click(function () {
+                $('#myform').submit();
+            });
+
+            // Handle the form submit event, and make the Ajax request:
+            $("#myform").on("submit", function () { 
+                // Show the "busy" Gif:
+                $("#loginForm").hide();
+                $("#divProcessing").show();
+                //var url = $(this).attr("action");
+                //var formData = $(this).serialize();
+                ////$.ajax({
+                //    url: url,
+                //    type: "POST",
+                //    data: formData,
+                //    dataType: "json",
+                //    success: function (resp) {
+                //        // Hide the "busy" gif:
+                //        $("#divProcessing").hide(); }
+            });
+       });
+
+    </script>
+}
+
+
+
+

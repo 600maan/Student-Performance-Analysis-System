@@ -1,0 +1,12 @@
+﻿@model IEnumerable<SPMS.Models.Exam>
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Result By Exam</h2>
+<div id="ExamHolder">
+    @Html.Partial("_GetExamPages", Model)
+</div>
+<div id="showresult">
+</div>
+

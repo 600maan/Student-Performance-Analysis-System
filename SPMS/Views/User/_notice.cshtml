@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SPMS.Models.Notification>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Notice Topic</th>
+                <th>Valid Upto</th>
+            </tr>
+        
+            
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem=>item.Title)
+        </td>
+    <td>
+        @Html.DisplayFor(modelItem=>item.ValidUpto)
+    </td>
+        </tr>
+}
+           
+            
+        </table>

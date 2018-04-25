@@ -1,0 +1,76 @@
+﻿@model SPMS.Models.Assignment
+
+@{
+    ViewBag.Title = "GiveAssignment";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@*@Html.ActionLink("Add Marks in all Assignments","AddMarksAssignment")*@
+
+    <fieldset>
+        <legend>Assignment</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClassId)
+        </div>
+        <div class="editor-field">
+           @Html.Action("ClassList")
+            @Html.ValidationMessageFor(model => model.ClassId)
+        </div>
+        @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubjectId)
+        </div>
+        <div class="editor-field">
+            <div id="showSubject"><input type="text" /></div>
+            @Html.ValidationMessageFor(model => model.SubjectId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssignmentTopic)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AssignmentTopic)
+            @Html.ValidationMessageFor(model => model.AssignmentTopic)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToSubmitDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ToSubmitDate)
+            @Html.ValidationMessageFor(model => model.ToSubmitDate)
+        </div>
+
+            <br />
+        <p>
+            <input type="submit" value="Create" class="shiny-button"/>
+        </p>
+            }
+    </fieldset>
+
+<script>
+    $(function () {
+        $("#Date").datepicker();
+        $("#ToSubmitDate").datepicker();
+    });
+</script>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
